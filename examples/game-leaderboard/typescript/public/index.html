@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Leaderboard</h1>
+      <p class="hint">Scores are stored in EchoValue key-value storage. No database.</p>
+
+      <form id="score-form" autocomplete="off">
+        <input id="name" name="name" maxlength="16" placeholder="Player name" required />
+        <input id="score" name="score" type="number" min="0" placeholder="Score" required />
+        <button type="submit">Submit score</button>
+      </form>
+      <p id="status" role="status"></p>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>Player</th><th>Score</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

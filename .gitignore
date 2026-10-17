@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment files (never commit real tokens)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node build output
+dist/
+coverage/
+*.log
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/

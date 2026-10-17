@@ -1,0 +1,22 @@
+{
+  "name": "echovalue-agent-shared-state",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Share state between two independent AI agents using EchoValue, with no Redis or database.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "bash demo.sh",
+    "agent:a": "node agent-a.ts",
+    "agent:b": "node agent-b.ts",
+    "test": "node --test client.test.ts agent.test.ts",
+    "test:live": "node --test live.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}

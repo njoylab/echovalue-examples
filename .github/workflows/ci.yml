@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: Python (agent-shared-state)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        working-directory: examples/agent-shared-state/python
+        run: python -m unittest discover -v
+
+  typescript:
+    name: TypeScript (${{ matrix.example }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example:
+          - examples/agent-shared-state/typescript
+          - examples/game-leaderboard/typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install dev dependencies
+        working-directory: ${{ matrix.example }}
+        run: npm install --no-audit --no-fund
+      - name: Typecheck
+        working-directory: ${{ matrix.example }}
+        run: npm run typecheck
+      - name: Test
+        working-directory: ${{ matrix.example }}
+        run: npm test
